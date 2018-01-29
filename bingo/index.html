@@ -1,0 +1,39 @@
+<!doctype html>
+<html id="app" style="user-select: none;">
+<head>
+  <meta charset="utf8">
+  <title>ビンゴ</title>
+  <style type="text/css">
+    .selected {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body style="text-align: center;">
+  <h1 style="border-bottom: solid;">ビンゴ</h1>
+  <span style="font-size: 10em" data-bind="text: selector">??</span>
+  <span style="position:absolute; right: 40%">クリックでスタート＆ストップ</span>
+  <table style="
+    border: solid;
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    " cellspacing="0">
+    <tbody data-bind="foreach: selections.lines">
+      <tr data-bind="foreach: line">
+        <td data-bind="
+            text: display(),
+            css: {selected: selected}
+          "
+          style="
+            border: solid;
+          border-width: 1px;
+          "
+        ></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+<script src="../lib/knockout-3.4.2.js"></script>
+<script src="app.js"></script>
+</html>

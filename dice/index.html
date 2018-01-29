@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>サイコロ</title>
+</head>
+<body id="body" style="user-select: none; width: 100vm; height: 100vh;">
+  <p style="margin-top: 0px; margin-bottom: 0px; text-align: center;"><button id="btn" style="font-size: 5em">スタート・ストップ</button></p>
+  <p style="margin-top: 0px; margin-bottom: 0px; text-align: center;">
+      <img style="position: absolute; left: 24%; margin-top: 0px; margin-bottom: 0px;" id="num" src="1.png">
+      <span style="position: absolute; left:54%; top: 50%; padding-top: 0;border-top: 0px; margin-top: 0px; margin-bottom: 0px;font-size: 5em" id="numStr">1</span>
+  </p>
+</body>
+<script type="text/javascript">
+  let timer = null
+  const body = document.querySelector('body')
+  const btn = document.querySelector('#btn')
+  const num = document.querySelector('#num')
+  const numStr = document.querySelector('#numStr')
+  body.addEventListener('click', () =>{
+    if (timer) {
+      clearInterval(timer)
+      timer = null
+    }
+    else {
+      timer = setInterval(() => {
+        const v = Math.floor( Math.random() * (7 + 1 - 1) ) + 1
+        const text = v === 7 ? 'ゴン太' : '' + v
+        numStr.innerHTML = '' + text
+        num.setAttribute('src', `${v}.png`)
+      }, 1)
+    }
+  })
+</script>
+</html>
